@@ -1,15 +1,13 @@
 package com.partTi.dao.recruit;
 
-
 import com.partTi.pojo.recruit.WorkResult;
-import com.partTi.pojo.resume.Resume;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
 @Mapper
-interface WorkResultDao {
+public interface WorkResultDao {
 
     @Select("<script>"
             + "SELECT * FROM work_result"
@@ -76,3 +74,4 @@ interface WorkResultDao {
     @Delete("delete from work_result where id=#{id}")
     int deleteWorkResult(Integer id);
 }
+

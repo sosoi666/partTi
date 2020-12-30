@@ -29,5 +29,5 @@ public interface SchoolDao {
     int updateSchool(School school);
 
     @Delete("delete from school where id=#{id}")
-    int deleteSchool(School school);
+    int deleteSchool(Integer id);
 }
