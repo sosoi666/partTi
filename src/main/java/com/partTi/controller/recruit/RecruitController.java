@@ -25,4 +25,14 @@ public class RecruitController {
         recruit.setDetail(findKey);
         return recruitService.getIndentDetailByAny(recruit,index,pageSize,sort);
     }
+
+    @GetMapping("/getRecruit")
+    private ResponseDate getRecruit(String id){
+        return recruitService.getRecruitById(id);
+    }
+
+    @GetMapping("/countRecruit")
+    private ResponseDate countRecruit(Recruit recruit,String sort){
+        return recruitService.countRecruit(recruit,sort);
+    }
 }
