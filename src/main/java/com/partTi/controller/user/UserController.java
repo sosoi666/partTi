@@ -1,6 +1,7 @@
 package com.partTi.controller.user;
 
 
+import com.partTi.pojo.user.CommonUser;
 import com.partTi.pojo.user.User;
 import com.partTi.service.user.UserService;
 import com.partTi.utils.ResponseDate;
@@ -44,5 +45,10 @@ public class UserController {
     public ResponseDate logout(HttpServletRequest request){
         request.getSession().setAttribute("loginUser",null);
         return new ResponseDate(200,"退出登录成功");
+    }
+
+    @PostMapping("/updateUser")
+    public ResponseDate updateUser(@RequestBody User user){
+        return userService.updateUser(user);
     }
 }

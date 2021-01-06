@@ -33,6 +33,7 @@ public interface ResumeDao {
             + "</script>")
     @Results(id="resumeMap",value={
             @Result(id=true,column = "id",property = "id"),
+            @Result(column = "resume_name",property = "resumeName"),
             @Result(column = "uid",property = "uid"),
             @Result(column = "name",property = "name"),
             @Result(column = "gender",property = "gender"),
@@ -87,7 +88,7 @@ public interface ResumeDao {
      * @param resume
      * @return
      */
-    @Insert("INSERT into resume (id,uid,name,gender,age,pic_src,school,major,phone,email,exp,skill,award,self_evaluation,create_time) values(#{id},#{uid},#{name},#{gender},#{age},#{picSrc},#{school},#{major},#{phone},#{email},#{exp},#{skill},#{award},#{selfEvaluation},#{createTime})")
+    @Insert("INSERT into resume (id,resume_name,uid,name,gender,age,pic_src,school,major,phone,email,exp,skill,award,self_evaluation,create_time) values(#{id},#{resumeName},#{uid},#{name},#{gender},#{age},#{picSrc},#{school},#{major},#{phone},#{email},#{exp},#{skill},#{award},#{selfEvaluation},#{createTime})")
     int insertResume(Resume resume);
 
     /**
@@ -95,7 +96,7 @@ public interface ResumeDao {
      * @param resume
      * @return
      */
-    @Update("UPDATE resume set uid=#{uid},name=#{name},gender=#{gender},age=#{age},pic_src=#{picSrc},school=#{school},major=#{major},phone=#{phone},email=#{email},exp=#{exp},skill=#{skill},award=#{award},self_evaluation=#{selfEvaluation},create_time=#{createTime} WHERE id=#{id}")
+    @Update("UPDATE resume set resume_name=#{resumeName},uid=#{uid},name=#{name},gender=#{gender},age=#{age},pic_src=#{picSrc},school=#{school},major=#{major},phone=#{phone},email=#{email},exp=#{exp},skill=#{skill},award=#{award},self_evaluation=#{selfEvaluation},create_time=#{createTime} WHERE id=#{id}")
     int updateResume(Resume resume);
 
     /**

@@ -7,6 +7,9 @@ server:
 
 
 Spring:
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
   datasource:
     #   数据源基本配置
     username: root
@@ -38,10 +41,10 @@ Spring:
       max-request-size: 100MB
 
 ftp:
-  host: 192.168.170.128
+  host: 192.168.63.131
   userName: root
   password: root
   port: 22
   rootPath: /usr/local/nginx/image
   img:
-    url: http://192.168.170.128:80/
+    url: http://192.168.63.131:80/

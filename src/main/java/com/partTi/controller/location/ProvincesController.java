@@ -1,7 +1,7 @@
 package com.partTi.controller.location;
 
 
-import com.partTi.service.location.CitiesService;
+import com.partTi.service.location.ProvinceService;
 import com.partTi.utils.ResponseDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(allowCredentials="true",maxAge = 3600)
-@RequestMapping("/city")
-public class CitiesController {
+@RequestMapping("/province")
+public class ProvincesController {
 
     @Autowired
-    private CitiesService citiesService;
+    private ProvinceService provinceService;
 
-    @GetMapping("getCity")
-    public ResponseDate getCityById(Integer id){
-        return citiesService.getCityById(id);
+    @GetMapping("getProvinces")
+    public ResponseDate getProvinces(){
+        return provinceService.getAllProvinces();
     }
 
-    @GetMapping("getCitiesByPro")
-    public ResponseDate getCities(Integer id){
-        return citiesService.getCitiesByProvinceId(id);
+    @GetMapping("getProvinceById")
+    public ResponseDate getProvinces(Integer id){
+        return provinceService.getProvincesById(id);
     }
 }

@@ -16,6 +16,7 @@ public interface CommonUserDao {
             @Result(id=true,column = "id",property = "id"),
             @Result(column = "common_name",property = "commonName"),
             @Result(column = "gender",property = "gender"),
+            @Result(column = "age",property = "age"),
             @Result(column = "schoolid",property = "schoolId"),
             @Result(column = "description",property = "description"),
             @Result(column = "location",property = "location"),
@@ -30,7 +31,7 @@ public interface CommonUserDao {
      * @param commonUser
      * @return
      */
-    @Insert("INSERT INTO common_user (id,common_name,gender,schoolid,description,location,phone,email,head_img) values(#{id},#{commonName},#{gender},#{schoolId},#{description},#{location},#{phone},#{email},#{headImg})")
+    @Insert("INSERT INTO common_user (id,common_name,gender,age,schoolid,description,location,phone,email,head_img) values(#{id},#{commonName},#{gender},#{age},#{schoolId},#{description},#{location},#{phone},#{email},#{headImg})")
     public int saveCommonUser(CommonUser commonUser);
 
     /**
@@ -38,7 +39,7 @@ public interface CommonUserDao {
      * @param commonUser
      * @return
      */
-    @Update("UPDATE common_user SET common_name=#{commonName},gender=#{gender},schoolid=#{schoolId},description=#{description},location=#{location},phone=#{phone},email=#{email},head_img=#{headImg} WHERE id=#{id}")
+    @Update("UPDATE common_user SET common_name=#{commonName},gender=#{gender},age=#{age},schoolid=#{schoolId},description=#{description},location=#{location},phone=#{phone},email=#{email},head_img=#{headImg} WHERE id=#{id}")
     public int updateCommonUser(CommonUser commonUser);
 
     /**
