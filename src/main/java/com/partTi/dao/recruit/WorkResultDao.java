@@ -39,7 +39,7 @@ public interface WorkResultDao {
             @Result(property = "recruit",column = "recruit_id",one=@One(select = "com.partTi.dao.recruit.RecruitDao.getRecruitById",fetchType = FetchType.EAGER)),
             @Result(property = "resume",column = "resume_id",one=@One(select = "com.partTi.dao.resume.ResumeDao.getResumeById",fetchType = FetchType.EAGER))
     })
-    List<WorkResult> getWorkResultByAny(@Param("resume") WorkResult workResult, @Param("index") Integer index, @Param("pageSize") Integer pageSize, @Param("sort") String sort);
+    List<WorkResult> getWorkResultByAny(@Param("workResult") WorkResult workResult, @Param("index") Integer index, @Param("pageSize") Integer pageSize, @Param("sort") String sort);
 
     @Select("<script>"
             + "SELECT COUNT(*) count FROM work_result"
@@ -59,7 +59,7 @@ public interface WorkResultDao {
             + "</where>"
             + "ORDER BY create_time ${sort}"
             + "</script>")
-    int countWorkResultByAny(@Param("resume") WorkResult workResult, @Param("sort") String sort);
+    int countWorkResultByAny(@Param("workResult") WorkResult workResult, @Param("sort") String sort);
 
     @Select("SELECT * FROM work_result WHERE id = #{id}")
     @ResultMap("workResultMap")
