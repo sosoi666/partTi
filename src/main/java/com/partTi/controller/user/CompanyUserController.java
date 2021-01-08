@@ -5,10 +5,7 @@ import com.partTi.service.user.CommonUserService;
 import com.partTi.service.user.CompanyUserService;
 import com.partTi.utils.ResponseDate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(allowCredentials="true",maxAge = 3600)
@@ -21,5 +18,10 @@ public class CompanyUserController {
     @GetMapping("/getUser")
     public ResponseDate getCompanyUser(Integer id){
         return companyUserService.getCompanyUserById(id);
+    }
+
+    @PostMapping("/updateCompanyUser")
+    public ResponseDate updateCompanyUser(@RequestBody CompanyUser companyUser){
+        return companyUserService.updateCompanyUser(companyUser);
     }
 }

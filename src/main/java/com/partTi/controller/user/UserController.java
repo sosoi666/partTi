@@ -25,6 +25,11 @@ public class UserController {
         if (tUser == null){
             return new ResponseDate(444,"登录失败");
         }
+
+        if (tUser.getRoleId() != 1 ){
+            return new ResponseDate(444,"登录失败");
+        }
+
         if (tUser.getPassword().equals(user.getPassword())){
             request.getSession().setAttribute("loginUser",tUser);
             return new ResponseDate(200,"登录成功",tUser);
@@ -41,9 +46,40 @@ public class UserController {
         return new ResponseDate(200,"获取当前用户成功",loginUser);
     }
 
+
+    @PostMapping("/companyLogin")
+    @ResponseBody
+    public ResponseDate companyLogin(@RequestBody User user, HttpServletRequest request){
+        User cUser = (User) userService.getUserByUsername(user.getUserName()).getData();
+        if (cUser == null){
+            return new ResponseDate(444,"登录失败");
+        }
+
+        if (cUser.getRoleId() != 2 ){
+            return new ResponseDate(444,"登录失败");
+        }
+
+        if (cUser.getPassword().equals(user.getPassword())){
+            request.getSession().setAttribute("companyUser",cUser);
+            return new ResponseDate(200,"登录成功",cUser);
+        }else {
+            return new ResponseDate(444,"登录失败");
+        }
+    }
+
+    @GetMapping("/getCurrentCompanyUser")
+    @ResponseBody
+    public ResponseDate getCurrentCompanyUser(HttpServletRequest request){
+        User companyUser = (User) request.getSession().getAttribute("companyUser");
+        System.out.println(companyUser);
+        return new ResponseDate(200,"获取当前企业用户成功",companyUser);
+    }
+
+
     @GetMapping("/logout")
     public ResponseDate logout(HttpServletRequest request){
         request.getSession().setAttribute("loginUser",null);
+        request.getSession().setAttribute("companyUser",null);
         return new ResponseDate(200,"退出登录成功");
     }
 
