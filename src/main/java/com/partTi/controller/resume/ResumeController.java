@@ -1,6 +1,7 @@
 package com.partTi.controller.resume;
 
 
+import com.partTi.pojo.recruit.Recruit;
 import com.partTi.pojo.resume.Resume;
 import com.partTi.service.recruit.RecruitService;
 import com.partTi.service.resume.ResumeService;
@@ -47,7 +48,7 @@ public class ResumeController {
     }
 
     @PostMapping("/deleteResume")
-    public ResponseDate deleteResume(@RequestBody Integer id){
-        return resumeService.deleteResume(id);
+    public ResponseDate deleteResume(@RequestBody Resume resume){
+        return resumeService.deleteResume(resume.getId());
     }
 }

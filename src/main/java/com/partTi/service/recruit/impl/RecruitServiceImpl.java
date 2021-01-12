@@ -74,4 +74,24 @@ public class RecruitServiceImpl implements RecruitService {
             return new ResponseDate(200,"删除招聘信息成功",id);
         }
     }
+
+    @Override
+    public ResponseDate setRecruitTrue(String id) {
+        int status = recruitDao.setRecruitTrue(id);
+        if (status <= 0){
+            return new ResponseDate(444,"更新招聘信息失败",status);
+        }else {
+            return new ResponseDate(200,"更新招聘信息成功",id);
+        }
+    }
+
+    @Override
+    public ResponseDate setRecruitFalse(String id) {
+        int status = recruitDao.setRecruitFalse(id);
+        if (status <= 0){
+            return new ResponseDate(444,"更新招聘信息失败",status);
+        }else {
+            return new ResponseDate(200,"更新招聘信息成功",id);
+        }
+    }
 }

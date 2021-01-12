@@ -65,7 +65,7 @@ public interface WorkResultDao {
     @ResultMap("workResultMap")
     WorkResult getWorkResultById(Integer id);
 
-    @Insert("INSERT INTO work_result (id,uid,recruit_id,salary,resume_id,create_time,state) values(#{id},#{uid},#{recruitId},#{salary},#{resumeId},createTime,state)")
+    @Insert("INSERT INTO work_result (id,uid,recruit_id,salary,resume_id,create_time,state) values(#{id},#{uid},#{recruitId},#{salary},#{resumeId},#{createTime},#{state})")
     int insertWorkResult(WorkResult workResult);
 
     @Update("UPDATE work_result SET uid=#{uid},recruit_id=#{recruitId},salary=#{salary},resume_id=#{resumeId},create_time=#{createTime},state=#{state} WHERE id=#{id}")

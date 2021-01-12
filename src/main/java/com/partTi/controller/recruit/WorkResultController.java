@@ -7,6 +7,8 @@ import com.partTi.utils.ResponseDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @CrossOrigin(allowCredentials="true",maxAge = 3600)
 @RequestMapping("/work")
@@ -17,6 +19,7 @@ public class WorkResultController {
 
     @GetMapping("/getWorks")
     public ResponseDate getWorks(WorkResult workResult, Integer index, Integer pageSize, String sort){
+        System.out.println(workResult);
         return  workResultService.getWorkResultByAny(workResult,index,pageSize,sort);
     }
 
@@ -32,6 +35,9 @@ public class WorkResultController {
 
     @PostMapping("/addWork")
     public ResponseDate addWork(@RequestBody WorkResult workResult){
+        Date date = new Date();
+        workResult.setCreateTime(date);
+        workResult.setState(0);
         return workResultService.insertWorkResult(workResult);
     }
 

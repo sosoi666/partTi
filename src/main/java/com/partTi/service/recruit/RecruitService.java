@@ -18,4 +18,8 @@ public interface RecruitService {
 
     ResponseDate deleteRecruitById(String id);
 
+    ResponseDate setRecruitTrue(String id);
+
+    ResponseDate setRecruitFalse(String id);
+
 }

@@ -131,4 +131,20 @@ public interface RecruitDao {
     @Delete("DELETE FROM recruit WHERE id=#{id}")
     int deleteRecruitById(String id);
 
+    /**
+     * 将招聘信息状态设为正在招聘
+     * @param id
+     * @return
+     */
+    @Update("UPDATE recruit set state = 1 WHERE id = #{id}")
+    Integer setRecruitTrue(String id);
+
+    /**
+     * 将招聘信息状态设为未在招聘
+     * @param id
+     * @return
+     */
+    @Update("UPDATE recruit set state = 0 WHERE id = #{id}")
+    Integer setRecruitFalse(String id);
+
 }

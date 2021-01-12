@@ -21,4 +21,9 @@ public class SchoolController {
     public ResponseDate getSchoolById(Integer id){
         return schoolService.getSchoolById(id);
     }
+
+    @GetMapping("/getAllSchool")
+    public ResponseDate getAllSchool(){
+        return schoolService.getAllSchool();
+    }
 }
